@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pb10.cpp" />
+    <ClCompile Include="pb11.cpp" />
     <ClCompile Include="pb2.cpp" />
     <ClCompile Include="pb1.cpp" />
     <ClCompile Include="pb3.cpp" />

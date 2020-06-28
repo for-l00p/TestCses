@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pb10.cpp" />
     <ClCompile Include="pb2.cpp" />
     <ClCompile Include="pb1.cpp" />
     <ClCompile Include="pb3.cpp" />
@@ -147,6 +148,8 @@
     <ClCompile Include="pb5.cpp" />
     <ClCompile Include="pb6.cpp" />
     <ClCompile Include="pb7.cpp" />
+    <ClCompile Include="pb8.cpp" />
+    <ClCompile Include="pb9.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">

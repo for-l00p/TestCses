@@ -39,6 +39,15 @@
     <ClCompile Include="pb7.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pb8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pb9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pb10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

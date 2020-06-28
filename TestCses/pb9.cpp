@@ -14,14 +14,17 @@
 
 typedef long long int ull_type;
 
+#define MODULO 1000000007
 
-
-int main() {
+int pb9_main() {
     OPEN_IN;
     ull_type n;
     STREAM_IN >> n;
 
-   
+    ull_type m = 1;
+    for (int i = 0; i < n; i++)
+        m = (2 * m) % MODULO;
+    std::cout << m;
 
     return 0;
 }

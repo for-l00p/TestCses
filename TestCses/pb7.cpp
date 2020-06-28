@@ -19,7 +19,7 @@ int main() {
     ull_type n;
     STREAM_IN >> n;
 
-    if (n>=1)
+    if (n >= 1)
         std::cout << 0 << std::endl;
 
     if (n >= 2)
@@ -27,7 +27,7 @@ int main() {
 
     if (n >= 3)
         std::cout << 28 << std::endl;
-   
+
     for (ull_type k = 4; k <= n; k++)
     {
         ull_type nb = k * k;
@@ -50,9 +50,9 @@ int main() {
         v += 4 * l * 6;
 
         //  cases internes (8 attacks)
-		v += l * l * 8;
+        v += l * l * 8;
 
-        std::cout << nb*(nb-1)/2 - v/2 << std::endl;
+        std::cout << nb * (nb - 1) / 2 - v / 2 << std::endl;
     }
 
     return 0;

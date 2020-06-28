@@ -146,6 +146,7 @@
     <ClCompile Include="pb4.cpp" />
     <ClCompile Include="pb5.cpp" />
     <ClCompile Include="pb6.cpp" />
+    <ClCompile Include="pb7.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">

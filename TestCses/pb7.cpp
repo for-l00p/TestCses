@@ -14,7 +14,7 @@
 
 typedef long long int ull_type;
 
-int main() {
+int pb7_main() {
     OPEN_IN;
     ull_type n;
     STREAM_IN >> n;

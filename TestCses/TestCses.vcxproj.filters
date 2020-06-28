@@ -36,6 +36,9 @@
     <ClCompile Include="pb6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pb7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

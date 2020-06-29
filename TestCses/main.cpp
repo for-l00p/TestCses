@@ -24,7 +24,7 @@ int pos;
 char* current_path;
 char* grid;
 
-#define GRID(X,Y) (grid[(X)+8*(Y)])
+#define GRID(X,Y) (grid[(X)+((Y)<<3)])
 
 void move(int x, int y)
 {
@@ -142,7 +142,7 @@ int main() {
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
-	std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << " s" << std::endl;
+	std::cout << std::endl << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << " s" << std::endl;
 #endif
 
 	return 0;

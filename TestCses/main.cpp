@@ -5,6 +5,7 @@
 #include <vector>
 #include <set>
 #include <sstream>
+#include <chrono>
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
@@ -27,13 +28,43 @@ char* grid;
 
 void move(int x, int y)
 {
+	if (pos == 7 && current_path[pos-1] != 'R')
+	{
+		pos--;
+		return;
+	}
+
+	if (pos == 14 && current_path[pos - 1] != 'U')
+	{
+		pos--;
+		return;
+	}
+
+	if (pos == 41 && current_path[pos - 1] != 'L')
+	{
+		pos--;
+		return;
+	}
+
+	if (pos == 42 && current_path[pos - 1] != 'D')
+	{
+		pos--;
+		return;
+	}
+
+	if (pos == 47 && current_path[pos - 1] != 'D')
+	{
+		pos--;
+		return;
+	}
+
 	if (x == 0 && y == 6) // Target
 	{
 		if (pos == 48)
 		{
 			auto s = std::string(current_path, pos);
 			solutions.push_back(s);
-			std::cout << s << " " << solutions.size() << std::endl;
+			//std::cout << s << " " << solutions.size() << std::endl;
 		}
 		pos--;
 		return;
@@ -79,6 +110,9 @@ int main() {
 	STREAM_IN >> s;
 
 	//std::cout << s;
+#ifdef MY_INPUT
+	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+#endif
 
 	grid = new char[8 * 7];
 	memset(grid, 0, 8 * 7);
@@ -87,6 +121,8 @@ int main() {
 	current_path = new char[48];
 	
 	move(0, 0);
+
+	std::cout << solutions.size() << std::endl;
 
 	int count = 0;
 	for (const auto& sol : solutions)
@@ -99,13 +135,15 @@ int main() {
 			count++;
 	}
 	std::cout << count;
-
+	
 	// Generer tous les chemins upperleft to lowerleft on 7x7 grid
 	// + match pattern
 
-
-
-
+#ifdef MY_INPUT
+	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+	std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << " s" << std::endl;
+#endif
 
 	return 0;
 }

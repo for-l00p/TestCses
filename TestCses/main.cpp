@@ -19,8 +19,13 @@ typedef long long int ull_type;
 
 int main() {
     OPEN_IN;
-    ull_type n;
-    STREAM_IN >> n;
+
+    std::string s;
+    STREAM_IN >> s;
+   
+    std::cout << s;
+   
+
 
 
     return 0;

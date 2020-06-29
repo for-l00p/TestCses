@@ -39,7 +39,7 @@ int main() {
             if (center.length() > 0)
             {
                 std::cout << "NO SOLUTION";
-                return 1;
+                return 0;
             }
             center = 'A' + i;
         }

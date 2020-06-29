@@ -51,6 +51,12 @@
     <ClCompile Include="pb11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pb12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pb13.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

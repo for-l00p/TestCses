@@ -19,20 +19,35 @@
 
 typedef long long int ull_type;
 
-int main() {
+int pb17_main() {
 	OPEN_IN;
 
 	ull_type n;
 	STREAM_IN >> n;
-	
-	// Trouver maximum de segment non overlapping
+
+	// Decrire fonction par escalier (x,y)
+	// Start = (-1,0)
+	// => (-1,0), (a0,1), (b0,0) on doit avoir -1 < a0 < b0
+	// List (xi,yi), rajouter (a,b)
+	// Function (k) => trouver xi tq xi <= k < xi+1 , dichotomie ln(n)
+
 	std::map<int, int> m;
 	for (int i = 0; i < n; i++)
 	{
 		int a, b;
 		STREAM_IN >> a >> b;
-		std::cout << a << " | " << b << std::endl;
+		m[a]++;
+		m[b]--;
 	}
+
+	int max = -100;
+	int h = 0;
+	for (const auto& x : m)
+	{
+		h += x.second;
+		max = std::max(max, h);
+	}
+	std::cout << max;
 
 	return 0;
 }

@@ -1,0 +1,3 @@
+Pour grid, essayer la recursion
+si '?' => all direction
+si <> '?', suivre direction

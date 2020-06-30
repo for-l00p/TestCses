@@ -147,6 +147,7 @@
     <ClCompile Include="pb14.cpp" />
     <ClCompile Include="pb15.cpp" />
     <ClCompile Include="pb16.cpp" />
+    <ClCompile Include="pb17.cpp" />
     <ClCompile Include="pb2.cpp" />
     <ClCompile Include="pb1.cpp" />
     <ClCompile Include="pb3.cpp" />
@@ -162,6 +163,7 @@
     <Text Include="input.txt">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
     </Text>
+    <Text Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

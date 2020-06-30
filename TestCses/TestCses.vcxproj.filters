@@ -69,8 +69,14 @@
     <ClCompile Include="pb16.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pb17.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="Todo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

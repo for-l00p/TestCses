@@ -146,6 +146,7 @@
     <ClCompile Include="pb13.cpp" />
     <ClCompile Include="pb14.cpp" />
     <ClCompile Include="pb15.cpp" />
+    <ClCompile Include="pb16.cpp" />
     <ClCompile Include="pb2.cpp" />
     <ClCompile Include="pb1.cpp" />
     <ClCompile Include="pb3.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="pb7.cpp" />
     <ClCompile Include="pb8.cpp" />
     <ClCompile Include="pb9.cpp" />
+    <ClCompile Include="pb_grid_unsolved.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">

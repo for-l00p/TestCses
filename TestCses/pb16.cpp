@@ -18,18 +18,20 @@
 
 typedef long long int ull_type;
 
-int main() {
+int pb16_main() {
 	OPEN_IN;
 
 	ull_type n;
 	STREAM_IN >> n;
-	
+
+	std::set<int> set;
 	for (int i = 0; i < n; i++)
 	{
-		int a, b;
-		STREAM_IN >> a >> b;
-		std::cout << a << " | " << b << std::endl;
+		int x;
+		STREAM_IN >> x;
+		set.insert(x);
 	}
-	
+	std::cout << set.size();
+
 	return 0;
 }

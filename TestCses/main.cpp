@@ -19,13 +19,15 @@
 
 typedef long long int ull_type;
 
-int main() {
+int pb_main() {
 	OPEN_IN;
 
 	ull_type n;
 	STREAM_IN >> n;
 	
 	// Trouver maximum de segment non overlapping
+	// graph (a,b) connecte => segments independants
+	// longueur max d'un cycle?
 	std::map<int, int> m;
 	for (int i = 0; i < n; i++)
 	{

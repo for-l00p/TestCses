@@ -72,6 +72,9 @@
     <ClCompile Include="pb17.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tester_grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

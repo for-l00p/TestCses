@@ -19,7 +19,7 @@
 
 typedef long long int ull_type;
 
-int pb_main() {
+int main() {
 	OPEN_IN;
 
 	ull_type n;

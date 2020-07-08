@@ -14,6 +14,8 @@
 
 typedef long long int ull_type;
 
+//https://cses.fi/problemset/task/1754
+// coin piles
 int pb11_main() {
     OPEN_IN;
     ull_type n;

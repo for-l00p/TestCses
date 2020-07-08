@@ -15,6 +15,8 @@
 
 typedef long long int ull_type;
 
+//https://cses.fi/problemset/task/1755
+// Palyndrome reorder
 int pb12_main() {
     OPEN_IN;
     std::string s;

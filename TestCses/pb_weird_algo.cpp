@@ -1,5 +1,7 @@
 #include <iostream>
 
+// https://cses.fi/problemset/task/1068
+// Weird algorithm
 int pb1_main() {
     long long int n;
     std::cin >> n;

@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <string>
 
+// https://cses.fi/problemset/task/1069
+// Repetitions
 int pb3_main() {
     long long int n;
     std::string s;

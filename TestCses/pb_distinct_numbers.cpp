@@ -4,7 +4,6 @@
 #include <fstream>
 #include <vector>
 #include <set>
-#include <map>
 #include <sstream>
 #include <chrono>
 
@@ -19,35 +18,22 @@
 
 typedef long long int ull_type;
 
-int pb17_main() {
+//https://cses.fi/problemset/task/1621
+// Distinct numbers
+int pb_distinct_numbers_main() {
 	OPEN_IN;
 
 	ull_type n;
 	STREAM_IN >> n;
 
-	// Decrire fonction par escalier (x,y)
-	// Start = (-1,0)
-	// => (-1,0), (a0,1), (b0,0) on doit avoir -1 < a0 < b0
-	// List (xi,yi), rajouter (a,b)
-	// Function (k) => trouver xi tq xi <= k < xi+1 , dichotomie ln(n)
-
-	std::map<int, int> m;
+	std::set<int> set;
 	for (int i = 0; i < n; i++)
 	{
-		int a, b;
-		STREAM_IN >> a >> b;
-		m[a]++;
-		m[b]--;
+		int x;
+		STREAM_IN >> x;
+		set.insert(x);
 	}
-
-	int max = -100;
-	int h = 0;
-	for (const auto& x : m)
-	{
-		h += x.second;
-		max = std::max(max, h);
-	}
-	std::cout << max;
+	std::cout << set.size();
 
 	return 0;
 }

@@ -26,6 +26,9 @@ ull_type get_exponent(int n, int p)
     return res;
 }
 
+
+//https://cses.fi/problemset/task/1618
+// TRailing zeros
 int pb10_main() {
     OPEN_IN;
     ull_type n;

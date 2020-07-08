@@ -71,7 +71,9 @@ bool is_perm_ok(const std::string& s, const std::vector<std::pair<int, int>>& re
     return true;
 }
 
-int pb15_main() {
+//https://cses.fi/problemset/task/1624
+// Chesboard and queens
+int pb_chessboard_and_queens() {
     OPEN_IN;
 
     std::vector<std::pair<int, int>> reserved;

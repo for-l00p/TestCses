@@ -17,6 +17,8 @@
 
 typedef long long int ull_type;
 
+//https://cses.fi/problemset/task/1623
+// Apple division
 int pb14_main() {
     OPEN_IN;
     ull_type n;

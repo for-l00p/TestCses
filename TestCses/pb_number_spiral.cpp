@@ -13,6 +13,8 @@
 
 typedef long long int ull_type;
 
+//https://cses.fi/problemset/task/1071
+// Number spiral
 int pb6_main() {
     OPEN_IN;
     ull_type n;

@@ -140,23 +140,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pb10.cpp" />
-    <ClCompile Include="pb11.cpp" />
-    <ClCompile Include="pb12.cpp" />
-    <ClCompile Include="pb13.cpp" />
-    <ClCompile Include="pb14.cpp" />
-    <ClCompile Include="pb15.cpp" />
-    <ClCompile Include="pb16.cpp" />
-    <ClCompile Include="pb17.cpp" />
-    <ClCompile Include="pb2.cpp" />
-    <ClCompile Include="pb1.cpp" />
-    <ClCompile Include="pb3.cpp" />
-    <ClCompile Include="pb4.cpp" />
-    <ClCompile Include="pb5.cpp" />
-    <ClCompile Include="pb6.cpp" />
-    <ClCompile Include="pb7.cpp" />
-    <ClCompile Include="pb8.cpp" />
-    <ClCompile Include="pb9.cpp" />
+    <ClCompile Include="pb_sum_two_values.cpp" />
+    <ClCompile Include="pb_trailing_zeros.cpp" />
+    <ClCompile Include="pb_coin_piles.cpp" />
+    <ClCompile Include="pb_palyndrome_reorder.cpp" />
+    <ClCompile Include="pb_create_string_i.cpp" />
+    <ClCompile Include="pb_apple_division.cpp" />
+    <ClCompile Include="pb_chessboard_and_queens.cpp" />
+    <ClCompile Include="pb_distinct_numbers.cpp" />
+    <ClCompile Include="pb_resturant_customers.cpp" />
+    <ClCompile Include="pb_missing_number.cpp" />
+    <ClCompile Include="pb_weird_algo.cpp" />
+    <ClCompile Include="pb_repetitions.cpp" />
+    <ClCompile Include="pb_increasing_array.cpp" />
+    <ClCompile Include="pb_permutations.cpp" />
+    <ClCompile Include="pb_number_spiral.cpp" />
+    <ClCompile Include="pb_two_kinghts.cpp" />
+    <ClCompile Include="pb_two_sets.cpp" />
+    <ClCompile Include="pb_bit_strings.cpp" />
     <ClCompile Include="pb_grid_unsolved.cpp" />
     <ClCompile Include="tester_grid.cpp" />
   </ItemGroup>

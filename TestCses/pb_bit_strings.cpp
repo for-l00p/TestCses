@@ -16,6 +16,8 @@ typedef long long int ull_type;
 
 #define MODULO 1000000007
 
+//https://cses.fi/problemset/task/1617
+// Bit strings
 int pb9_main() {
     OPEN_IN;
     ull_type n;

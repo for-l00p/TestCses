@@ -14,6 +14,8 @@
 
 typedef long long int ull_type;
 
+// https://cses.fi/problemset/task/1072
+//Two Knights
 int pb7_main() {
     OPEN_IN;
     ull_type n;

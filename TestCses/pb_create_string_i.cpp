@@ -52,7 +52,8 @@ static std::set<std::string> get_distinct_perm(const std::string& s)
     return ret;
 }
 
-
+//https://cses.fi/problemset/task/1622
+// Create string I
 int pb13_main() {
     OPEN_IN;
     std::string s;

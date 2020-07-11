@@ -28,13 +28,13 @@ typedef std::int64_t ll_type;
 //https://cses.fi/problemset/task/1074
 // Stick Lengths
 
-int main() {
+int main_stick_lengths() {
 
 	OPEN_IN;
 
 	std::size_t n;
 	STREAM_IN >> n;
-	
+
 	// Calcul mediane ?
 
 	std::vector<ll_type> v(n);
@@ -44,6 +44,15 @@ int main() {
 		STREAM_IN >> k;
 		v[i] = k;
 	}
+	std::sort(v.begin(), v.end());
 
+	ll_type mediane = v[v.size() / 2];
 
+	ll_type delta = 0;
+	for (std::size_t i = 0; i < n; i++)
+	{
+		delta += std::abs(v[i] - mediane);
+	}
+	std::cout << delta;
+	return 0;
 }

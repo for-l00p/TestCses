@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pb_max_subarray_sum.cpp" />
     <ClCompile Include="pb_sum_two_values.cpp" />
     <ClCompile Include="pb_trailing_zeros.cpp" />
     <ClCompile Include="pb_coin_piles.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="pb_bit_strings.cpp" />
     <ClCompile Include="pb_grid_unsolved.cpp" />
     <ClCompile Include="tester_grid.cpp" />
+    <ClCompile Include="test_split.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">

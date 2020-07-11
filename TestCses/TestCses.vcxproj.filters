@@ -19,6 +19,9 @@
     <Filter Include="Unsolved">
       <UniqueIdentifier>{d643fe9b-4e76-40b6-9b6c-889a6013e277}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{43a8234e-8286-4acc-82f1-10f47cdab083}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,6 +85,12 @@
       <Filter>Unsolved</Filter>
     </ClCompile>
     <ClCompile Include="pb_sum_two_values.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="test_split.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_max_subarray_sum.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
   </ItemGroup>

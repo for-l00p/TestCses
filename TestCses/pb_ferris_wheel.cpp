@@ -28,14 +28,14 @@ typedef std::int64_t ll_type;
 //https://cses.fi/problemset/task/1090
 // Ferris Wheel
 
-int main() {
+int pb_ferris_wheel_main() {
 
 	OPEN_IN;
 
 	std::size_t n;
 	ll_type x;
 	STREAM_IN >> n >> x;
-	
+
 	// Calcul mediane ?
 
 	std::vector<ll_type> p(n);
@@ -62,7 +62,7 @@ int main() {
 		}
 		j--;
 	}
-	if (i==j)
+	if (i == j)
 		gondolas++;
 	std::cout << gondolas;
 }

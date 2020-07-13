@@ -96,6 +96,12 @@
     <ClCompile Include="pb_stick_lengths.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_ferris_wheel.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_towers.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

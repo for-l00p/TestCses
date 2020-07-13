@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pb_ferris_wheel.cpp" />
     <ClCompile Include="pb_max_subarray_sum.cpp" />
     <ClCompile Include="pb_stick_lengths.cpp" />
     <ClCompile Include="pb_sum_two_values.cpp" />
+    <ClCompile Include="pb_towers.cpp" />
     <ClCompile Include="pb_trailing_zeros.cpp" />
     <ClCompile Include="pb_coin_piles.cpp" />
     <ClCompile Include="pb_palyndrome_reorder.cpp" />

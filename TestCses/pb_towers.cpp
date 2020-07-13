@@ -28,7 +28,7 @@ typedef std::int64_t ll_type;
 //https://cses.fi/problemset/task/1073
 // Towers
 
-int main() {
+int pb_towers_main() {
 
 	OPEN_IN;
 
@@ -41,7 +41,7 @@ int main() {
 	{
 		ll_type k;
 		STREAM_IN >> k;
-		
+
 		auto it = towers.upper_bound(k);
 		if (it == towers.end())
 		{
@@ -49,7 +49,7 @@ int main() {
 			new_towers_count++;
 			//std::cout << "new tower1 : " << k << std::endl;
 		}
-		else if (it->second>0)
+		else if (it->second > 0)
 		{
 			(it->second)--;
 			towers[k]++;

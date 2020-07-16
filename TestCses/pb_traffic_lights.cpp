@@ -28,7 +28,7 @@ typedef std::int64_t ll_type;
 //https://cses.fi/problemset/task/1163
 // Traffic Lights
 
-int main() {
+int pb_traffic_lights_main() {
 
 	OPEN_IN;
 
@@ -59,4 +59,5 @@ int main() {
 		it2--;
 		std::cout << it2->first << " ";
 	}
+	return 0;
 }

@@ -25,38 +25,35 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1163
-// Traffic Lights
+//https://cses.fi/problemset/task/1164
+// Room Allocation
 
 int main() {
-
 	OPEN_IN;
 
-	ll_type x, n;
-	STREAM_IN >> x >> n;
 
-	std::map<ll_type, ll_type> chunks;
-	std::map<ll_type, int> lengths;
-	chunks.insert(std::make_pair((ll_type)0, x));
-	lengths.insert(std::make_pair(x, 1));
-	ll_type max = VALUE_MIN;
+
+	ll_type n;
+	STREAM_IN >> n;
+
+	// The events, (arrival + departure)
+	std::map<ll_type, ll_type> events;
 	for (ll_type i = 0; i < n; i++)
 	{
-		ll_type k;
-		STREAM_IN >> k;
-
-		auto it = chunks.upper_bound(k);
-		it--;
-		ll_type length = it->second - it->first;
-		lengths[length]--;
-		if (lengths[length] == 0)
-			lengths.erase(length);
-		chunks.insert(std::make_pair(k, it->second));
-		lengths[it->second - k]++;
-		it->second = k;
-		lengths[it->second - it->first]++;
-		auto it2 = lengths.end();
-		it2--;
-		std::cout << it2->first << " ";
+		ll_type a, b;
+		STREAM_IN >> a >> b;
+		events[2 * a]++; // Arrival on even
+		events[2 * b + 1]--; // Departure on odd
 	}
+
+	// Etat des chambres ?
+	ll_type max = VALUE_MIN;
+	ll_type sum = 0;
+	for (auto event : events)
+	{
+		sum += event.second;
+		max = std::max(max, sum);
+	}
+	std::cout << max;
+
 }

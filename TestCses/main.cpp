@@ -8,6 +8,7 @@
 #include <sstream>
 #include <chrono>
 #include <cassert>
+#include <stack>
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
@@ -28,32 +29,53 @@ typedef std::int64_t ll_type;
 //https://cses.fi/problemset/task/1164
 // Room Allocation
 
+struct event
+{
+	std::vector<int> client_ids;
+};
+
 int main() {
 	OPEN_IN;
 
-
-
-	ll_type n;
+	int n;
 	STREAM_IN >> n;
 
-	// The events, (arrival + departure)
-	std::map<ll_type, ll_type> events;
-	for (ll_type i = 0; i < n; i++)
+	// The events, (arrival on even day + departure on odd day)
+	std::map<ll_type, event> events;
+	for (int i = 0; i < n; i++)
 	{
 		ll_type a, b;
 		STREAM_IN >> a >> b;
-		events[2 * a]++; // Arrival on even
-		events[2 * b + 1]--; // Departure on odd
+		events[2 * a].client_ids.push_back(i);
+		events[2 * b + 1].client_ids.push_back(i);
 	}
 
-	// Etat des chambres ?
-	ll_type max = VALUE_MIN;
-	ll_type sum = 0;
+	std::stack<int> free_rooms;
+	int max_room = 0;
+	//std::map<int, int> occupancy;
+	std::vector<int> client_room(n); // client_id are 0,n-1
 	for (auto event : events)
 	{
-		sum += event.second;
-		max = std::max(max, sum);
+		for (auto client_id : event.second.client_ids)
+		{
+			if (event.first % 2 == 0)
+			{
+				// an arrival
+				if (free_rooms.empty())
+					free_rooms.push(++max_room);
+				int room_id = free_rooms.top();
+				free_rooms.pop();
+				client_room[client_id] = room_id;
+			}
+			else
+			{
+				// a departure
+				int room_id = client_room[client_id];
+				free_rooms.push(room_id);
+			}
+		}
 	}
-	std::cout << max;
-
+	std::cout << max_room << std::endl;
+	for (int i = 0; i < client_room.size(); i++)
+		std::cout << client_room[i] << " ";
 }

@@ -31,7 +31,7 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-std::pair<ll_type, ll_type> calculate_nb_product(ll_type time, std::vector<ll_type> times)
+static std::pair<ll_type, ll_type> calculate_nb_product(ll_type time, std::vector<ll_type> times)
 {
 	ll_type nb_product = 0;
 	ll_type min_add = VALUE_MAX;
@@ -47,7 +47,7 @@ std::pair<ll_type, ll_type> calculate_nb_product(ll_type time, std::vector<ll_ty
 
 //https://cses.fi/problemset/task/1620
 // Factory Machines
-int main() {
+int pb_machine_factory_main() {
 	OPEN_IN;
 
 	// n machines, t products
@@ -66,10 +66,10 @@ int main() {
 
 	ll_type remaining_products = t;
 	ll_type add_time = 0;
-	ll_type current_time = 0;	
+	ll_type current_time = 0;
 	ll_type max_time_with_remaining_products = VALUE_MIN;
 	// Surement plus elegant a trouver ....
-	for(int i = 0; i < 10;i++)
+	for (int i = 0; i < 10; i++)
 	{
 		add_time = (ll_type)(remaining_products / total_performance);
 		current_time += add_time;

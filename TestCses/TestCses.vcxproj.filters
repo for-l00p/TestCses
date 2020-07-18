@@ -108,6 +108,9 @@
     <ClCompile Include="pb_room_alloc.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_machine_factory.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

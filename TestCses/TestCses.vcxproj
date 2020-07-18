@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pb_ferris_wheel.cpp" />
+    <ClCompile Include="pb_machine_factory.cpp" />
     <ClCompile Include="pb_max_subarray_sum.cpp" />
     <ClCompile Include="pb_room_alloc.cpp" />
     <ClCompile Include="pb_stick_lengths.cpp" />

@@ -12,7 +12,7 @@
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
-#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (5).txt"
+//#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (5).txt"
 //#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input_time_limit.txt"
 #define STREAM_IN my_file
 #define OPEN_IN std::fstream my_file(FILE_INPUT); if (!my_file.good()) { std::cout << "Error opening " << FILE_INPUT; return -1; }
@@ -31,63 +31,65 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-std::pair<ll_type, ll_type> calculate_nb_product(ll_type time, std::vector<ll_type> times)
+ll_type get_reward2(const std::vector<std::pair<ll_type, ll_type>> & tasks, const std::vector<int> & perm)
 {
-	ll_type nb_product = 0;
-	ll_type min_add = VALUE_MAX;
-	for (int i = 0; i < times.size(); i++)
+	int sum_deadline = 0;
+	for (int i = 0; i < tasks.size(); i++)
+		sum_deadline += tasks[i].second;
+
+
+	ll_type current_sum = 0;
+	ll_type total_sum = 0;
+	for (int i = 0; i < perm.size(); i++)
 	{
-		nb_product += time / times[i];
-		auto remainder = time % times[i];
-		min_add = std::min(min_add, times[i] - remainder);
+		int task_index = perm[i];
+		current_sum += tasks[task_index].first;
+		total_sum += current_sum;
+
 	}
-	return std::make_pair(nb_product, min_add);
+	return sum_deadline - total_sum;
+}
+
+ll_type get_reward(const std::vector<std::pair<ll_type, ll_type>> & tasks, const std::vector<int>& perm)
+{
+	ll_type time = 0;
+	ll_type reward = 0;
+	for (int i = 0; i < perm.size(); i++)
+	{
+		int task_index = perm[i];
+		std::cout << tasks[task_index].first << " ";
+		time += tasks[task_index].first;
+		reward += tasks[task_index].second - time;
+	}
+	return reward;
 }
 
 
-//https://cses.fi/problemset/task/1620
-// Factory Machines
+//https://cses.fi/problemset/task/1630
+// Tasks and Deadlines
 int main() {
 	OPEN_IN;
 
-	// n machines, t products
-	int n, t;
-	STREAM_IN >> n >> t;
+	// n tasks
+	ll_type n;
+	STREAM_IN >> n;
 
-	std::vector<ll_type> times(n);
-	double total_performance = 0.0;
+
+	std::vector<std::pair<ll_type, ll_type>> tasks(n);
 	for (int i = 0; i < n; i++)
 	{
-		ll_type k;
-		STREAM_IN >> k;
-		times[i] = k;
-		total_performance += 1.0 / (double)k;
+		//  (first) a = duration, (second) d = deadline of task
+		ll_type a, d;
+		STREAM_IN >> a >> d;
+		//std::cout << a << " " << d << std::endl;
+		tasks[i] = std::make_pair(a, d);
 	}
 
-	ll_type remaining_products = t;
-	ll_type add_time = 0;
-	ll_type current_time = 0;	
-	ll_type max_time_with_remaining_products = VALUE_MIN;
-	// Surement plus elegant a trouver ....
-	for(int i = 0; i < 10;i++)
-	{
-		add_time = (ll_type)(remaining_products / total_performance);
-		current_time += add_time;
-		auto nb_products = calculate_nb_product(current_time, times);
-		remaining_products = t - nb_products.first;
-		if (remaining_products >= 0)
-			max_time_with_remaining_products = std::max(max_time_with_remaining_products, current_time);
-		MY_DEBUG(std::cout << "time: " << current_time << " add:" << add_time << " rp:" << remaining_products << std::endl;);
-	}
-
-	current_time = max_time_with_remaining_products;
-	do
-	{
-		auto nb_products = calculate_nb_product(current_time, times);
-		remaining_products = t - nb_products.first;
-		if (remaining_products > 0)
-			current_time += nb_products.second;
-	} while (remaining_products > 0);
-
-	std::cout << current_time;
+	std::vector<int> perm(3);
+	perm[0] = 1;
+	perm[1] = 0;
+	perm[2] = 2;
+	auto reward = get_reward(tasks, perm);
+	auto reward2 = get_reward2(tasks, perm);
+	std::cout << std::endl << reward << " " << reward2;
 }

@@ -12,13 +12,17 @@
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
-//#define FILE_INPUT "c:\\tmp\\test_input (3).txt"
+#define FILE_INPUT "c:\\tmp\\test_input_time_limit.txt"
 #define STREAM_IN my_file
 #define OPEN_IN std::fstream my_file(FILE_INPUT); if (!my_file.good()) { std::cout << "Error opening " << FILE_INPUT; return -1; }
+#define MY_DEBUG(x) x
 #else
 #define STREAM_IN std::cin
 #define OPEN_IN
+#define MY_DEBUG(x)
 #endif
+
+// 371 045 814 100
 
 typedef std::int64_t ll_type;
 
@@ -26,56 +30,51 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1164
-// Room Allocation
-
-struct event
-{
-	std::vector<int> client_ids;
-};
-
+//https://cses.fi/problemset/task/1620
+// Factory Machines
 int main() {
 	OPEN_IN;
 
-	int n;
-	STREAM_IN >> n;
+	// n machines, t products
+	int n, t;
+	STREAM_IN >> n >> t;
 
-	// The events, (arrival on even day + departure on odd day)
-	std::map<ll_type, event> events;
+	std::vector<ll_type> times(n);
+	std::map<ll_type, int> ordered_times;
+	double total_performance = 0.0;
 	for (int i = 0; i < n; i++)
 	{
-		ll_type a, b;
-		STREAM_IN >> a >> b;
-		events[2 * a].client_ids.push_back(i);
-		events[2 * b + 1].client_ids.push_back(i);
+		ll_type k;
+		STREAM_IN >> k;
+		times[i] = k;
+		total_performance += 1.0 / (double)k;
+		ordered_times[k]++;
 	}
 
-	std::stack<int> free_rooms;
-	int max_room = 0;
-	//std::map<int, int> occupancy;
-	std::vector<int> client_room(n); // client_id are 0,n-1
-	for (auto event : events)
-	{
-		for (auto client_id : event.second.client_ids)
+	// calculate max perf possible
+	ll_type min_time = (ll_type)(t / total_performance);
+	MY_DEBUG(std::cout << min_time << std::endl;)
+
+	ll_type nb_product;
+	ll_type min_complement = 1;
+	ll_type min_add_time;
+	min_time--;
+	do
+	{	
+		min_time +=  min_complement;
+		nb_product = 0;
+		min_complement = VALUE_MAX;
+		for (int i = 0; i < n; i++)
 		{
-			if (event.first % 2 == 0)
-			{
-				// an arrival
-				if (free_rooms.empty())
-					free_rooms.push(++max_room);
-				int room_id = free_rooms.top();
-				free_rooms.pop();
-				client_room[client_id] = room_id;
-			}
-			else
-			{
-				// a departure
-				int room_id = client_room[client_id];
-				free_rooms.push(room_id);
-			}
+			nb_product += min_time / times[i];
+			auto remainder = min_time % times[i];
+			auto complement = times[i] - remainder;
+			min_complement = std::min(min_complement, complement);
 		}
-	}
-	std::cout << max_room << std::endl;
-	for (int i = 0; i < client_room.size(); i++)
-		std::cout << client_room[i] << " ";
+		MY_DEBUG(std::cout << " Test " << min_time << " " << nb_product << " " << min_complement << std::endl;);
+		min_add_time = (ll_type)((t - nb_product) / total_performance);
+		MY_DEBUG(std::cout << " Missing products " << t - nb_product << " min_add: " << min_add_time << std::endl;);
+		min_complement = min_add_time;	
+	} while (nb_product<t || min_add_time < 0);
+	std::cout << min_time;
 }

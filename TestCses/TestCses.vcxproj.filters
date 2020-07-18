@@ -105,6 +105,9 @@
     <ClCompile Include="pb_traffic_lights.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_room_alloc.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

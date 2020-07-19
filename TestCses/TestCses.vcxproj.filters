@@ -90,9 +90,6 @@
     <ClCompile Include="test_split.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="pb_max_subarray_sum.cpp">
-      <Filter>Solved</Filter>
-    </ClCompile>
     <ClCompile Include="pb_stick_lengths.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
@@ -127,6 +124,12 @@
       <Filter>Solved</Filter>
     </ClCompile>
     <ClCompile Include="pb_subarray_sum1.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_max_subarray_sum.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_sum_array_sum2.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
   </ItemGroup>

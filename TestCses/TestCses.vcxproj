@@ -149,6 +149,7 @@
     <ClCompile Include="pb_room_alloc.cpp" />
     <ClCompile Include="pb_stick_lengths.cpp" />
     <ClCompile Include="pb_subarray_sum1.cpp" />
+    <ClCompile Include="pb_sum_array_sum2.cpp" />
     <ClCompile Include="pb_sum_two_values.cpp" />
     <ClCompile Include="pb_tasks_and_dealine.cpp" />
     <ClCompile Include="pb_three_values.cpp" />

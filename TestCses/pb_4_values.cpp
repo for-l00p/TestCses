@@ -64,7 +64,7 @@ int main() {
 				{
 					if (p.first != q.first && p.first != q.second && p.second != q.first && p.second != q.second)
 					{
-						std::cout << p.first+1 << " " << p.second+1 << " " << q.first+1 << " " << q.second+1;
+						std::cout << p.first + 1 << " " << p.second + 1 << " " << q.first + 1 << " " << q.second + 1;
 						return 0;
 					}
 				}

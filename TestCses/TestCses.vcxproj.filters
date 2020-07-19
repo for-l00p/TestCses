@@ -117,6 +117,9 @@
     <ClCompile Include="pb_reading_books.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_three_values.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

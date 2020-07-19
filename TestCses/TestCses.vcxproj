@@ -148,6 +148,7 @@
     <ClCompile Include="pb_stick_lengths.cpp" />
     <ClCompile Include="pb_sum_two_values.cpp" />
     <ClCompile Include="pb_tasks_and_dealine.cpp" />
+    <ClCompile Include="pb_three_values.cpp" />
     <ClCompile Include="pb_towers.cpp" />
     <ClCompile Include="pb_traffic_lights.cpp" />
     <ClCompile Include="pb_trailing_zeros.cpp" />

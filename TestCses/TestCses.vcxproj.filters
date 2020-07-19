@@ -114,6 +114,9 @@
     <ClCompile Include="pb_tasks_and_dealine.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_reading_books.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

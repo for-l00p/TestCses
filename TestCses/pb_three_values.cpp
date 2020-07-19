@@ -29,9 +29,9 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1642
-// Sum of Four Values
-int main() {
+//https://cses.fi/problemset/task/1641
+// Sum of Three Values
+int pb_three_values_main() {
 	OPEN_IN;
 
 	// n + target value
@@ -60,7 +60,7 @@ int main() {
 				{
 					if (index != i && index != j)
 					{
-						std::cout << i+1 << " " << j+1 << " " << index+1;
+						std::cout << i + 1 << " " << j + 1 << " " << index + 1;
 						return 0;
 					}
 				}

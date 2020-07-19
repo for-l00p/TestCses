@@ -29,14 +29,34 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1642
-// Sum of Four Values
+//https://cses.fi/problemset/task/1645
+// Nearest Smaller Values
+
+// Test naive
+void naive(const std::vector<ll_type> & v)
+{
+	for (auto i = 0; i < v.size(); i++)
+	{
+		bool found = false;
+		for (auto j = i - 1; !found && j >= 0; j--)
+		{
+			if (v[j] < v[i])
+			{
+				std::cout << j+1 << " ";
+				found = true;
+			}
+		}
+		if (!found)
+			std::cout << "0 ";
+	}
+}
+
 int main() {
 	OPEN_IN;
 
-	// n + target value
-	ll_type n, x;
-	STREAM_IN >> n >> x;
+	// n
+	ll_type n;
+	STREAM_IN >> n;
 
 	std::vector<ll_type> v(n);
 	for (int i = 0; i < n; i++)
@@ -46,30 +66,5 @@ int main() {
 		v[i] = k;
 	}
 
-	std::map<ll_type, std::vector<std::pair<int, int>>> half_targets;
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = i + 1; j < n; j++)
-			half_targets[v[i] + v[j]].push_back(std::make_pair(i, j));
-	}
-	for (const auto& half_sum : half_targets)
-	{
-		auto  it = half_targets.find(x - half_sum.first);
-		if (it != half_targets.end())
-		{
-			// Check indexes differ
-			for (auto p : half_sum.second)
-			{
-				for (auto q : it->second)
-				{
-					if (p.first != q.first && p.first != q.second && p.second != q.first && p.second != q.second)
-					{
-						std::cout << p.first+1 << " " << p.second+1 << " " << q.first+1 << " " << q.second+1;
-						return 0;
-					}
-				}
-			}
-		}
-	}
-	std::cout << "IMPOSSIBLE";
+	naive(v);
 }

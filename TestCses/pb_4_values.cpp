@@ -31,7 +31,7 @@ typedef std::int64_t ll_type;
 
 //https://cses.fi/problemset/task/1642
 // Sum of Four Values
-int main() {
+int pb_4_values_main() {
 	OPEN_IN;
 
 	// n + target value

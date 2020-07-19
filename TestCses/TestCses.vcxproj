@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pb_4_values.cpp" />
     <ClCompile Include="pb_ferris_wheel.cpp" />
     <ClCompile Include="pb_machine_factory.cpp" />
     <ClCompile Include="pb_max_subarray_sum.cpp" />

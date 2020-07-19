@@ -123,6 +123,12 @@
     <ClCompile Include="pb_4_values.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_nearest_value.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_subarray_sum1.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

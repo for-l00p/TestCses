@@ -36,16 +36,14 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1661
-// Subarray Sums II
-int main() {
+//https://cses.fi/problemset/task/1660
+// Subarray Sums I
+int pb_subarray_sum1_main() {
 	OPEN_IN;
 
 	// n
 	ll_type n, x;
 	STREAM_IN >> n >> x;
-
-	// Attention au cas du zero !!!
 
 	std::map<ll_type, int> sums;
 	sums[0] = 1;
@@ -79,4 +77,5 @@ int main() {
 	std::cout << std::endl << "Time difference = " << std::chrono::duration_cast<std::chrono::seconds> (end - begin).count() << " s" << std::endl;
 #endif
 
+	return 0;
 }

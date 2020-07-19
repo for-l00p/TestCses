@@ -29,21 +29,33 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-//https://cses.fi/problemset/task/1641
-// Sum of Three Values
-int main() {
+//https://cses.fi/problemset/task/1631
+// Reading Books
+int pb_reading_books_main() {
 	OPEN_IN;
 
-	// n + target value
-	ll_type n, x;
-	STREAM_IN >> n >> x;
+	// n books
+	ll_type n;
+	STREAM_IN >> n;
 
-	std::vector<ll_type> values(n);
+	std::vector<ll_type> durations(n);
+	ll_type sum = 0;
+	ll_type max = VALUE_MIN;
 	for (int i = 0; i < n; i++)
 	{
-		ll_type k;
-		STREAM_IN >> k;
-		values[i] = k;
+		ll_type t;
+		STREAM_IN >> t;
+		durations[i] = t;
+		sum += t;
+		max = std::max(max, t);
+	}
+	//std::sort(durations.begin(), durations.end());
+
+	ll_type delta = 0;
+	if (max > sum - max)
+	{
+		delta = max - (sum - max);
 	}
 
+	std::cout << sum + delta;
 }

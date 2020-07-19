@@ -92,12 +92,30 @@ int main() {
 	STREAM_IN >> n >> k;
 
 	std::vector<ll_type> v(n);
+	ll_type sum = 0;
 	for (int i = 0; i < n; i++)
 	{
-		ll_type k;
-		STREAM_IN >> k;
-		v[i] = k;
+		ll_type x;
+		STREAM_IN >> x;
+		v[i] = x;
+		sum += x;
 	}
+	double target = (double)sum / (double)k;
+
+
+
+	// sum
+	// sum/k
+	// sum1 + sum2 + ... sumk = sum
+	// k * max(sum_i) >= sum
+	// max(sum_i) >= sum/k
+	// Ideal: tous les morceaux = sum/k (entier)
+
+	// voisinage de sum/k inf ou sup ?
+
+
+
+
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();

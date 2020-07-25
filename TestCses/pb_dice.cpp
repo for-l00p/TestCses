@@ -38,22 +38,48 @@ typedef std::int64_t ll_type;
 #define N_MAX 200000
 #define MODULO (1000000007)
 
-//https://cses.fi/problemset/task/1634
-// Minimizing Coins
-int main() {
+// Valuesfrom n=1 up to n=6
+static ll_type first_values[6] = { 1, 2, 4, 8, 16, 32 };
+
+
+
+// n(50) = 660 641 036
+
+//https://cses.fi/problemset/task/1633
+// Dice Combinations
+int pb_dice_main() {
 	OPEN_IN;
 
 	// n
-	ll_type n, x;
-	STREAM_IN >> n >> x;
+	ll_type n;
+	STREAM_IN >> n;
 
-	std::vector<ll_type> c(n);
-	for (int i = 0; i < n; i++)
-		STREAM_IN >> c[i];
-	// Les c[i] sont distincts
-	std::sort(c.begin(), c.end());
+	if (n < 7)
+	{
+		std::cout << first_values[n - 1];
+		return 0;
+	}
 
-	
+	std::queue<ll_type> queue;
+	ll_type sum_v = 0;
+	for (auto x : first_values)
+	{
+		queue.push(x);
+		sum_v += x;
+	}
+
+	for (int i = 7; i < n; i++)
+	{
+		auto first = queue.front();
+		queue.pop();
+		queue.push(sum_v);
+		sum_v += -first + sum_v;
+		sum_v = sum_v % MODULO;
+	}
+	if (sum_v >= 0)
+		std::cout << sum_v;
+	else
+		std::cout << sum_v + MODULO;
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();

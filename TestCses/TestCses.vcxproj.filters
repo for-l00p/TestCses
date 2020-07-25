@@ -147,6 +147,9 @@
     <ClCompile Include="pb_max_subarray_sum_2.cpp">
       <Filter>Unsolved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_dice.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

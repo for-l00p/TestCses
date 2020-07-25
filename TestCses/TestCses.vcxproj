@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="array_division.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pb_4_values.cpp" />
     <ClCompile Include="pb_ferris_wheel.cpp" />

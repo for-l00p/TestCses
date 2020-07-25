@@ -18,7 +18,7 @@
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
-//#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (12).txt"
+//#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (15).txt"
 //#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input_time_limit.txt"
 //#define FILE_INPUT MY_TEST
 #define STREAM_IN my_file
@@ -36,84 +36,90 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-// count couple (x,y) avec x<y
-static ll_type count_couples(const std::vector<int>& v1, const std::vector<int>& v2)
+static bool erase_element(std::multiset<ll_type> & m, ll_type value)
 {
-	ll_type count = 0;
-	for (const auto x1 : v1)
+	auto it = m.find(value);
+	if (it != m.end())
 	{
-		auto lower = std::upper_bound(v2.begin(), v2.end(), x1);
-		count += std::distance(lower, v2.end());
+		m.erase(it);
+		return true;
 	}
-	return count;
+	else
+		return false;
 }
 
-static ll_type count_couples0(const std::vector<int>& v1, const std::vector<int>& v2)
-{
-	ll_type count = 0;
-	for (const auto x1 : v1)
-	{
-		for (const auto x2 : v2)
-		{
-			if (x1 < x2)
-				count++;
-		}
-	}
-	return count;
-}
-
-static ll_type naive(const std::vector<ll_type>& sums, ll_type n)
-{
-	int count = 0;
-	for (int i = 0; i < sums.size(); i++)
-		for (int j = i+1; j < sums.size(); j++)
-	{
-			if (sums[i] == sums[j])
-				count++;
-	}
-	return count;
-}
-
-ll_type positive_remainder(ll_type v, ll_type n)
-{
-	auto r = v % n;
-	if (r < 0)
-		r += n;
-	return r;
-}
-
-//https://cses.fi/problemset/task/1085
-// Array Division
+//https://cses.fi/problemset/task/1076
+// Sliding Median
 int main() {
 	OPEN_IN;
 
 	// n
 	ll_type n, k;
 	STREAM_IN >> n >> k;
-
-	std::vector<ll_type> v(n);
-	ll_type sum = 0;
+	std::vector<ll_type> v0(n);
 	for (int i = 0; i < n; i++)
 	{
 		ll_type x;
 		STREAM_IN >> x;
-		v[i] = x;
-		sum += x;
+		v0[i] = x;
 	}
-	double target = (double)sum / (double)k;
 
+	// Init start
+	std::vector<ll_type> v_sorted(v0.begin(), v0.begin() + k);
+	std::sort(v_sorted.begin(), v_sorted.begin()+k);
+	std::multiset<ll_type> left;
+	std::multiset<ll_type> right;
 
+	left.insert(v_sorted.begin(), v_sorted.begin() + v_sorted.size() / 2);
+	right.insert(v_sorted.begin() + v_sorted.size() / 2, v_sorted.begin() + v_sorted.size());
+	
+	// on doit avoir left.size <= right.size <= left.size + 1
+	for (int i = k; i < n; i++)
+	{
+		ll_type median;
+		if (right.size() > left.size())
+			median = *(right.begin());
+		else
+			median = *(--left.end());
+		std::cout << median << " ";
 
-	// sum
-	// sum/k
-	// sum1 + sum2 + ... sumk = sum
-	// k * max(sum_i) >= sum
-	// max(sum_i) >= sum/k
-	// Ideal: tous les morceaux = sum/k (entier)
+		// on enleve v[i-k], on ajoute v[i]
+		if (!erase_element(left, v0[i - k]) && !erase_element(right, v0[i - k]))
+			throw std::runtime_error("Missing element");
 
-	// voisinage de sum/k inf ou sup ?
+		if (v0[i] <= median)
+		{
+			left.insert(v0[i]);
+		}
+		else
+		{
+			right.insert(v0[i]);
+		}
 
-
+		// Rebalance left & right 
+		while (right.size() < left.size())
+		{
+			auto it = --left.end();
+			auto v = *it;
+			left.erase(it);
+			right.insert(v);
+		}
+		
+		// Here right.size>= left.size
+		while (right.size() > left.size() + 1)
+		{
+			auto it = right.begin();
+			auto v = *it;
+			right.erase(it);
+			left.insert(v);
+		}
+	}
+	ll_type median;
+	if (right.size() > left.size())
+		median = *(right.begin());
+	else
+		median = *(--left.end());
+	std::cout << median << " ";
 
 
 

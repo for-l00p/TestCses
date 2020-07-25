@@ -135,6 +135,9 @@
     <ClCompile Include="pb_subarray_div.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="array_division.cpp">
+      <Filter>Unsolved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

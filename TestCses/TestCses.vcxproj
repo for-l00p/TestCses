@@ -148,6 +148,7 @@
     <ClCompile Include="pb_nearest_value.cpp" />
     <ClCompile Include="pb_reading_books.cpp" />
     <ClCompile Include="pb_room_alloc.cpp" />
+    <ClCompile Include="pb_sliding_median.cpp" />
     <ClCompile Include="pb_stick_lengths.cpp" />
     <ClCompile Include="pb_subarray_div.cpp" />
     <ClCompile Include="pb_subarray_sum1.cpp" />

@@ -36,7 +36,7 @@ typedef std::int64_t ll_type;
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
 
-static bool erase_element(std::multiset<ll_type> & m, ll_type value)
+static bool erase_element(std::multiset<ll_type>& m, ll_type value)
 {
 	auto it = m.find(value);
 	if (it != m.end())
@@ -48,9 +48,9 @@ static bool erase_element(std::multiset<ll_type> & m, ll_type value)
 		return false;
 }
 
-//https://cses.fi/problemset/task/1077
-// Sliding Cost
-int main() {
+//https://cses.fi/problemset/task/1076
+// Sliding Median
+int pb_sliding_median_main() {
 	OPEN_IN;
 
 	// n
@@ -66,13 +66,13 @@ int main() {
 
 	// Init start
 	std::vector<ll_type> v_sorted(v0.begin(), v0.begin() + k);
-	std::sort(v_sorted.begin(), v_sorted.begin()+k);
+	std::sort(v_sorted.begin(), v_sorted.begin() + k);
 	std::multiset<ll_type> left;
 	std::multiset<ll_type> right;
 
 	left.insert(v_sorted.begin(), v_sorted.begin() + v_sorted.size() / 2);
 	right.insert(v_sorted.begin() + v_sorted.size() / 2, v_sorted.begin() + v_sorted.size());
-	
+
 	// on doit avoir left.size <= right.size <= left.size + 1
 	for (int i = k; i < n; i++)
 	{
@@ -104,7 +104,7 @@ int main() {
 			left.erase(it);
 			right.insert(v);
 		}
-		
+
 		// Here right.size>= left.size
 		while (right.size() > left.size() + 1)
 		{

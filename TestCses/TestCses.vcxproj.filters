@@ -138,6 +138,9 @@
     <ClCompile Include="array_division.cpp">
       <Filter>Unsolved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_sliding_median.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

@@ -36,8 +36,6 @@ int pb_ferris_wheel_main() {
 	ll_type x;
 	STREAM_IN >> n >> x;
 
-	// Calcul mediane ?
-
 	std::vector<ll_type> p(n);
 	for (std::size_t i = 0; i < n; i++)
 	{

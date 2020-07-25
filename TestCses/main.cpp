@@ -73,6 +73,14 @@ int main() {
 	left.insert(v_sorted.begin(), v_sorted.begin() + v_sorted.size() / 2);
 	right.insert(v_sorted.begin() + v_sorted.size() / 2, v_sorted.begin() + v_sorted.size());
 	
+	ll_type sum_left = 0;
+	for (auto v : left)
+		sum_left += v;
+
+	ll_type sum_right = 0;
+	for (auto v : right)
+		sum_right += v;
+
 	// on doit avoir left.size <= right.size <= left.size + 1
 	for (int i = k; i < n; i++)
 	{
@@ -81,19 +89,25 @@ int main() {
 			median = *(right.begin());
 		else
 			median = *(--left.end());
-		std::cout << median << " ";
+		std::cout << left.size()*median - sum_left + sum_right - right.size()*median << " ";
 
 		// on enleve v[i-k], on ajoute v[i]
-		if (!erase_element(left, v0[i - k]) && !erase_element(right, v0[i - k]))
+		if (erase_element(left, v0[i - k]))
+			sum_left -= v0[i - k];
+		else if (erase_element(right, v0[i - k]))
+			sum_right -= v0[i - k];
+		else
 			throw std::runtime_error("Missing element");
 
 		if (v0[i] <= median)
 		{
 			left.insert(v0[i]);
+			sum_left += v0[i];
 		}
 		else
 		{
 			right.insert(v0[i]);
+			sum_right += v0[i];
 		}
 
 		// Rebalance left & right 
@@ -103,6 +117,8 @@ int main() {
 			auto v = *it;
 			left.erase(it);
 			right.insert(v);
+			sum_left -= v;
+			sum_right += v;
 		}
 		
 		// Here right.size>= left.size
@@ -112,6 +128,8 @@ int main() {
 			auto v = *it;
 			right.erase(it);
 			left.insert(v);
+			sum_left += v;
+			sum_right -= v;
 		}
 	}
 	ll_type median;
@@ -119,8 +137,7 @@ int main() {
 		median = *(right.begin());
 	else
 		median = *(--left.end());
-	std::cout << median << " ";
-
+	std::cout << left.size() * median - sum_left + sum_right - right.size() * median << " ";
 
 
 #ifdef MY_INPUT

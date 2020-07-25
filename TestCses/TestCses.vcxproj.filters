@@ -141,6 +141,12 @@
     <ClCompile Include="pb_sliding_median.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_sliding_cost.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_max_subarray_sum_2.cpp">
+      <Filter>Unsolved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

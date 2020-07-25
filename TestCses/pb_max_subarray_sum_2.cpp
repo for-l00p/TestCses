@@ -12,7 +12,6 @@
 #include <cstdlib>
 #include <random>
 #include <functional>
-#include <queue>
 
 #define MY_TEST "c:\\tmp\\my_test.txt"
 #define MY_OUT "c:\\tmp\\my_out.txt"
@@ -36,50 +35,54 @@ typedef std::int64_t ll_type;
 #define VALUE_MIN (INT64_MIN);
 #define VALUE_MAX (INT64_MAX);
 #define N_MAX 200000
-#define MODULO (1000000007)
-
-// Valuesfrom n=1 up to n=6
-ll_type first_values[6] = { 1, 2, 4, 8, 16, 32 };
 
 
-
-// n(50) = 660 641 036
-
-//https://cses.fi/problemset/task/1633
-// Dice Combinations
-int main() {
+//https://cses.fi/problemset/task/1644
+// Maximum Subarray Sum II
+int pb_max_subarry_sum2_main() {
 	OPEN_IN;
 
 	// n
-	ll_type n;
-	STREAM_IN >> n;
-
-	if (n < 7)
+	ll_type n, a, b;
+	STREAM_IN >> n >> a >> b;
+	ll_type sum = 0;
+	std::vector<ll_type> v_sum;
+	for (std::size_t i = 0; i < n; i++)
 	{
-		std::cout << first_values[n-1];
-		return 0;
+		ll_type k;
+		STREAM_IN >> k;
+		sum += k;
+		v_sum.push_back(sum);
 	}
 
-	std::queue<ll_type> queue; 
-	ll_type sum_v = 0;
-	for (auto x : first_values)
+	// k<i-a, k<i-b mais si a,b loins => *(a-b)
+
+	// On cherche 2 vecteurs
+	// v_min[i]=min(sum(xk), k<=i)
+	// v_max[i]=max(sum(xk), k>=i)
+
+	ll_type min = VALUE_MAX;
+	std::vector<ll_type> v_min(n);
+	for (std::size_t i = 0; i < n; i++)
 	{
-		queue.push(x);
-		sum_v += x;
+		min = std::min(min, v_sum[i]);
+		v_min[i] = min;
 	}
-	
-	for (int i=7;i<n;i++)
-	{		
-		auto first = queue.front();
-		queue.pop();
-		queue.push(sum_v);
-		sum_v += - first + sum_v;
-		sum_v = sum_v % MODULO;
+
+	ll_type max = VALUE_MIN;
+	std::vector<ll_type> v_max(n);
+	for (ll_type i = n - 1; i >= 0; i--)
+	{
+		max = std::max(max, v_sum[i]);
+		v_max[i] = max;
 	}
-	if (sum_v>=0)
-		std::cout << sum_v;
-	else
-		std::cout << sum_v + MODULO;
+
+	// max of diffs
+	ll_type delta_max = VALUE_MIN;
+	for (ll_type i = 1; i < n; i++)
+		delta_max = std::max(delta_max, v_max[i] - v_min[i - 1]);
+	delta_max = std::max(delta_max, v_max[0] - 0);
+	std::cout << delta_max;
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();

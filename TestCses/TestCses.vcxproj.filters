@@ -153,6 +153,9 @@
     <ClCompile Include="pb_min_coins.cpp">
       <Filter>Solved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_coin_combi_1.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

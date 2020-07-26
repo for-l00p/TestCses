@@ -18,8 +18,8 @@
 #define MY_OUT "c:\\tmp\\my_out.txt"
 
 #ifdef MY_INPUT
-#define FILE_INPUT "input.txt"
-//#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (17).txt"
+//#define FILE_INPUT "input.txt"
+#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (17).txt"
 //#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input_time_limit.txt"
 //#define FILE_INPUT MY_TEST
 #define STREAM_IN my_file
@@ -55,9 +55,9 @@ static int solve_count(int target)
 	return count;
 }
 
-//https://cses.fi/problemset/task/1636
-// Coin Combinations II
-int main() {
+//https://cses.fi/problemset/task/1635
+// Coin Combinations I
+int pb_coin_combi_1_main() {
 	OPEN_IN;
 
 	// n
@@ -71,7 +71,7 @@ int main() {
 		c.insert(k);
 	}
 
-//	std::cout << solve_count(x);
+	//	std::cout << solve_count(x);
 
 	std::vector<int> ways(x + 1);
 	ways[0] = 1;

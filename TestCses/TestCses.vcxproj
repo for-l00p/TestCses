@@ -147,6 +147,7 @@
     <ClCompile Include="pb_machine_factory.cpp" />
     <ClCompile Include="pb_max_subarray_sum.cpp" />
     <ClCompile Include="pb_max_subarray_sum_2.cpp" />
+    <ClCompile Include="pb_min_coins.cpp" />
     <ClCompile Include="pb_nearest_value.cpp" />
     <ClCompile Include="pb_reading_books.cpp" />
     <ClCompile Include="pb_room_alloc.cpp" />

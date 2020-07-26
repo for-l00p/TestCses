@@ -40,11 +40,9 @@ typedef std::int64_t ll_type;
 #define N_MAX 200000
 #define MODULO (1000000007)
 
-
-
-//https://cses.fi/problemset/task/1635
-// Coin Combinations I
-int main() {
+//https://cses.fi/problemset/task/1634
+// Minimizing Coins
+int pb_min_coins_main() {
 	OPEN_IN;
 
 	// n
@@ -57,9 +55,57 @@ int main() {
 	// Les c[i] sont distincts
 	std::sort(c.begin(), c.end());
 
+	// ====
+	// On cherche des ki tq sum(ki.ci) = x (ci donnes distintcs ci>0) (ki>=0)
+	// tq S = sum(ki) soit minimale
+	//
+	// on doit avoir gcd(ci) | x,  sinon impossible
+	// donc on peut tout diviser par gcd(ci)
+	// on suppose gcd(ci) = 1
+	// (3,5) => impossibles 4, 7 [ 8 9 10 ]
+	// on doit avoir x >= min (ci)
+	// (3,4) => impossible 5, [6,7,8]
 
+	// (5,7) => imposs: 6, 8, 9, 11, 13, 17, 18,19, 22
+	// (3,17), 3, 6, 9, 12, 15, (17), 18
 
+	// Crible tableau m[0, n] init à infinity
+	// on part de la plus petite piece
+	// m[k.c1] = k
+	// m[k.c2] = min(m[k.c2], k) etc...
 
+	std::vector<int> mins(x + 1);
+	mins[0] = 0;
+	for (int i = 1; i < mins.size(); i++)
+		mins[i] = VALUE32_MAX;
+
+	std::vector<int> pos;
+	pos.push_back(0);
+
+	while (!pos.empty())
+	{
+		std::set<int> new_pos;
+		for (int i = 0; i < pos.size(); i++)
+		{
+			auto min = mins[pos[i]];
+			for (int j = 0; j < c.size() && pos[i] + c[j] <= x; j++)
+			{
+				auto prev_min = mins[pos[i] + c[j]];
+				if (min + 1 < prev_min)
+				{
+					mins[pos[i] + c[j]] = min + 1;
+					new_pos.insert(pos[i] + c[j]);
+				}
+			}
+		}
+		pos.clear();
+		for (auto x : new_pos)
+			pos.push_back(x);
+	}
+	if (mins[x] != VALUE32_MAX)
+		std::cout << mins[x];
+	else
+		std::cout << -1;
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();

@@ -42,7 +42,7 @@ typedef std::int64_t ll_type;
 
 //https://cses.fi/problemset/task/1637
 // Removing Digits
-int main() {
+int pb_removing_digits_main() {
 	OPEN_IN;
 
 	// n
@@ -55,7 +55,7 @@ int main() {
 
 	std::vector<int> mins(n + 1);
 	mins[0] = 0;
-	for (int i = 1; i <= 9;i++)
+	for (int i = 1; i <= 9; i++)
 		mins[i] = 1;
 
 	for (int i = 10; i <= n; i++)
@@ -72,7 +72,7 @@ int main() {
 			}
 			power10 *= 10;
 		}
-		mins[i] = min+1;
+		mins[i] = min + 1;
 	}
 	std::cout << mins[n];
 

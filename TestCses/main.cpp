@@ -19,7 +19,7 @@
 
 #ifdef MY_INPUT
 #define FILE_INPUT "input.txt"
-//#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (17).txt"
+#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input (18).txt"
 //#define FILE_INPUT "C:\\Users\\lione\\Downloads\\test_input_time_limit.txt"
 //#define FILE_INPUT MY_TEST
 #define STREAM_IN my_file
@@ -40,20 +40,7 @@ typedef std::int64_t ll_type;
 #define N_MAX 200000
 #define MODULO (1000000007)
 
-static std::set<int> c;
-static int solve_count(int target)
-{
-	if (target < 0)
-		return 0;
-
-	if (target == 0)
-		return 1;
-
-	int count = 0;
-	for (auto v : c)
-		count += solve_count(target - v);
-	return count;
-}
+// 187 405 784
 
 //https://cses.fi/problemset/task/1636
 // Coin Combinations II
@@ -64,6 +51,7 @@ int main() {
 	ll_type n, x;
 	STREAM_IN >> n >> x;
 
+	std::set<int> c;
 	for (int i = 0; i < n; i++)
 	{
 		int k;
@@ -73,24 +61,34 @@ int main() {
 
 //	std::cout << solve_count(x);
 
-	std::vector<int> ways(x + 1);
-	ways[0] = 1;
-	for (int i = 1; i < ways.size(); i++)
-		ways[i] = 0;
+	// sur chaque point map<last coin, count>
+	// x = 33: (1,17) (5,6)...
+	// x = 34: (1,29) (5,7)...
+
+	std::vector<std::map<int, int>> ways(x + 1);
+	ways[0][0]=1;
 	for (int k = 1; k <= x; k++)
 	{
-		int count = 0;
+		if (k % 1000 == 0)
+			std::cout << k << std::endl;
+		std::map<int, int> counts;
 		for (auto v : c)
 		{
 			if (k - v >= 0)
 			{
-				count += ways[k - v];
-				count = count % MODULO;
+				for (const auto& w : ways[k - v])
+				{
+					if (w.first <= v)
+						counts[v] = (counts[v] + w.second) % MODULO;
+				}
 			}
 		}
-		ways[k] = count;
+		ways[k] = counts;
 	}
-	std::cout << ways[x];
+	int total = 0;
+	for (const auto& w : ways[x])
+		total = (total + w.second) % MODULO;
+	std::cout << total;
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();

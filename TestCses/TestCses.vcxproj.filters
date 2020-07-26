@@ -159,6 +159,12 @@
     <ClCompile Include="pb_coin_combi_2.cpp">
       <Filter>Unsolved</Filter>
     </ClCompile>
+    <ClCompile Include="pb_removing_digits.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="pb_grid_paths.cpp">
+      <Filter>Solved</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />

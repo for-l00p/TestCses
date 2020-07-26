@@ -146,12 +146,14 @@
     <ClCompile Include="pb_coin_combi_2.cpp" />
     <ClCompile Include="pb_dice.cpp" />
     <ClCompile Include="pb_ferris_wheel.cpp" />
+    <ClCompile Include="pb_grid_paths.cpp" />
     <ClCompile Include="pb_machine_factory.cpp" />
     <ClCompile Include="pb_max_subarray_sum.cpp" />
     <ClCompile Include="pb_max_subarray_sum_2.cpp" />
     <ClCompile Include="pb_min_coins.cpp" />
     <ClCompile Include="pb_nearest_value.cpp" />
     <ClCompile Include="pb_reading_books.cpp" />
+    <ClCompile Include="pb_removing_digits.cpp" />
     <ClCompile Include="pb_room_alloc.cpp" />
     <ClCompile Include="pb_sliding_cost.cpp" />
     <ClCompile Include="pb_sliding_median.cpp" />

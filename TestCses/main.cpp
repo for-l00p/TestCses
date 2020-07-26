@@ -13,6 +13,7 @@
 #include <random>
 #include <functional>
 #include <queue>
+#include <cstring>
 
 #define MY_TEST "c:\\tmp\\my_test.txt"
 #define MY_OUT "c:\\tmp\\my_out.txt"
@@ -40,8 +41,8 @@ typedef std::int64_t ll_type;
 #define N_MAX 200000
 #define MODULO (1000000007)
 
-//https://cses.fi/problemset/task/1637
-// Removing Digits
+//https://cses.fi/problemset/task/1638
+// Grid Paths
 int main() {
 	OPEN_IN;
 
@@ -53,28 +54,66 @@ int main() {
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 #endif
 
-	std::vector<int> mins(n + 1);
-	mins[0] = 0;
-	for (int i = 1; i <= 9;i++)
-		mins[i] = 1;
-
-	for (int i = 10; i <= n; i++)
+	auto g = new ll_type[n * n];
+	std::memset(g, 0, n * n * sizeof(ll_type));
+	for (ll_type i = 0; i < n; i++)
 	{
-		int min = VALUE32_MAX;
-		int power10 = 1;
-		while (power10 <= i)
+		std::string s;
+		STREAM_IN >> s;
+		for (int j = 0; j < n; j++)
 		{
-			int digit = (i / power10) % 10;
-			if (digit > 0)
-			{
-				int test_number = i - digit;
-				min = std::min(min, mins[test_number]);
-			}
-			power10 *= 10;
+			if (s[j] == '*')
+				g[i * n + j] = -1;
 		}
-		mins[i] = min+1;
 	}
-	std::cout << mins[n];
+	if (g[0 * n + 0] == -1 || g[(n - 1) * n + (n - 1)] == -1)
+	{
+		std::cout << "0";
+		return 0;
+	}
+
+	g[0 * n + 0] = 1;
+
+
+	for (ll_type k = 1; k <= 2 * n - 2; k++)
+	{
+		for (ll_type i = 0; i < n; i++)
+		{
+			ll_type j = k - i;
+			if (j >= 0 && j < n)
+			{
+				switch (g[i * n + j])
+				{
+				case 0:
+				{
+					ll_type sum = 0;
+					if (j - 1 >= 0)
+					{
+						auto v = g[i * n + (j - 1)];
+						if (v > 0)
+							sum = (sum + v) % MODULO;
+					}
+					if (i - 1 >= 0)
+					{
+						auto v = g[(i - 1) * n + j];
+						if (v > 0)
+							sum = (sum + v) % MODULO;
+					}
+					g[i * n + j] = sum;
+				}
+				break;
+
+				case -1:
+					break;
+
+				default:
+					throw std::runtime_error("Invalid case?");
+				}
+			}
+		}
+	}
+	std::cout << g[(n - 1) * n + (n - 1)];
+
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();

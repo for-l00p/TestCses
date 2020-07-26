@@ -42,7 +42,7 @@ typedef std::int64_t ll_type;
 
 //https://cses.fi/problemset/task/1636
 // Coin Combinations II
-int main() {
+int pb_coin_combi_2_main() {
 	OPEN_IN;
 
 	// n
@@ -57,11 +57,11 @@ int main() {
 		c.insert(k);
 	}
 
-//	std::cout << solve_count(x);
+	//	std::cout << solve_count(x);
 
-	// sur chaque point map<last coin, count>
-	// x = 33: (1,17) (5,6)...
-	// x = 34: (1,29) (5,7)...
+		// sur chaque point map<last coin, count>
+		// x = 33: (1,17) (5,6)...
+		// x = 34: (1,29) (5,7)...
 
 #ifdef MY_INPUT
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -72,7 +72,7 @@ int main() {
 
 
 	std::vector<std::map<int, int>> ways(x + 1);
-	ways[0][0]=1;
+	ways[0][0] = 1;
 	for (int k = 1; k <= x; k++)
 	{
 		if (k % 1000 == 0)
@@ -82,7 +82,7 @@ int main() {
 		{
 			int count = 0;
 			if (k - v >= 0)
-			{				
+			{
 				for (auto it = ways[k - v].begin(); it->first <= v && it != ways[k - v].end(); ++it)
 					count = (count + it->second) % MODULO;
 			}
